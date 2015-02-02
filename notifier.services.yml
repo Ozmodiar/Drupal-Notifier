@@ -1,0 +1,6 @@
+parameters:
+  notifier.example_page.class: Drupal\notifier\Page\ExamplePage
+
+services:
+  notifier.example_page:
+    class: "%notifier.example_page.class%"
