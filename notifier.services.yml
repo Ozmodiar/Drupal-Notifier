@@ -1,6 +1,26 @@
 parameters:
   notifier.example_page.class: Drupal\notifier\Page\ExamplePage
+  notifier.profile_form.class: Drupal\notifier\Form\ProfileForm
+  notifier.recover_password_type.class: Drupal\notifier\Type\RecoverPasswordType
+  notifier.type_store.class: Drupal\notifier\Type\TypeStore
+  notifier.type_compiler_pass.class: Drupal\notifier\Type\TypeCompilerPass
 
 services:
   notifier.example_page:
     class: "%notifier.example_page.class%"
+
+  notifier.profile_form:
+    class: "%notifier.profile_form.class%"
+
+  notifier.type_store:
+    class: "%notifier.type_store.class%"
+
+  notifier.recover_password_type:
+    class: "%notifier.recover_password_type.class%"
+    tags:
+      -  { name: notifier.type }
+
+  notifier.type_compiler_pass:
+    class: "%notifier.type_compiler_pass.class%"
+    tags:
+      -  { name: compiler_pass }

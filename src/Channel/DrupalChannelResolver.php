@@ -5,10 +5,11 @@ namespace Drupal\notifier\Channel;
 use Notifier\Channel\ChannelInterface;
 use Notifier\Channel\ChannelResolverInterface;
 use Notifier\Channel\ChannelStore;
+use Notifier\Mail\MailChannel;
 use Notifier\Recipient\RecipientInterface;
 use Notifier\Type\TypeInterface;
 
-class RecoverPasswordChannelResolver implements ChannelResolverInterface {
+class DrupalChannelResolver implements ChannelResolverInterface {
 
   /**
    * @param  RecipientInterface $recipient
@@ -17,7 +18,7 @@ class RecoverPasswordChannelResolver implements ChannelResolverInterface {
    * @return ChannelInterface[]
    */
   public function filterChannels(RecipientInterface $recipient, TypeInterface $type, array $channels) {
-    // TODO: Implement filterChannels() method.
+    return $channels;
   }
 
   /**
@@ -28,7 +29,6 @@ class RecoverPasswordChannelResolver implements ChannelResolverInterface {
    * @return ChannelInterface[]
    */
   public function getChannels(TypeInterface $type, ChannelStore $channelStore) {
-    // TODO: Implement getChannels() method.
+    return array(new MailChannel());
   }
-
 }

@@ -4,6 +4,7 @@ function notifier_menu() {
   $items = array();
 
   $items += DIC::service('notifier.example_page')->buildMenu();
+  $items += DIC::service('notifier.profile_form')->buildMenu();
 
   return $items;
 }
