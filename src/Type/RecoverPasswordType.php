@@ -14,4 +14,8 @@ class RecoverPasswordType implements TypeInterface {
   public function getIdentifier() {
     return 'recover_password_type';
   }
+
+  public function getDescription() {
+    return 'The message you get when you want to recover your password.';
+  }
 }

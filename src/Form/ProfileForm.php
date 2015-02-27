@@ -2,8 +2,29 @@
 
 namespace Drupal\notifier\Form;
 
+use Drupal\notifier\Type\TypeStore;
+use Notifier\Notifier;
 
 class ProfileForm {
+
+  /**
+   * @var Notifier
+   */
+  private $notifier;
+
+  /**
+   * @var TypeStore
+   */
+  private $typeStore;
+
+  /**
+   * @param Notifier $notifier
+   * @param TypeStore $type_store
+   */
+  public function __construct(Notifier $notifier, TypeStore $type_store) {
+    $this->notifier = $notifier;
+    $this->typeStore = $type_store;
+  }
 
   public function buildMenu() {
     return array(
@@ -21,8 +42,22 @@ class ProfileForm {
   }
 
   public function buildForm() {
-    var_dump(\DIC::service('notifier.type_store')->getTypes());
+    $types = $this->typeStore->getTypes();
+    $channels = $this->notifier->getChannelStore()->getChannels();
 
-    return 'woot';
+    $channel_options = array();
+    foreach ($channels as $channel) {
+      $channel_options[$channel->getIdentifier()] = $channel->getIdentifier();
+    }
+
+    foreach ($types as $identifier => $type) {
+      $form[$identifier] = array(
+        '#type' => 'select',
+        '#title' => $type->getDescription(),
+        '#options' => $channel_options,
+      );
+    }
+
+    return $form;
   }
 }

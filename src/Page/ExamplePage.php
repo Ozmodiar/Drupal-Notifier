@@ -2,7 +2,7 @@
 
 namespace Drupal\notifier\Page;
 
-use Drupal\notifier\Channel\DrupalChannelResolver;
+use Drupal\notifier\Channel\ChannelResolver;
 use Drupal\notifier\Type\RecoverPasswordType;
 use Notifier\Mail\ParameterBag\MailMessageParameterBag;
 use Notifier\Mail\ParameterBag\MailRecipientParameterBag;
@@ -26,6 +26,7 @@ class ExamplePage {
   }
 
   public function buildPage() {
+    //TODO: You cannot know which parameterbags to provide here because you don't know the channels that are available...
     $message = new Message(new RecoverPasswordType());
     $message->addParameterBag(new MailMessageParameterBag('Mail subject', 'Body...'));
 
@@ -33,7 +34,7 @@ class ExamplePage {
     $recipient->addParameterBag(new MailRecipientParameterBag('joeri.vandooren@gmail.com'));
 
     // The ChannelResolver will decide to which channels a message of a specific type must be sent.
-    $notifier = new Notifier(new DrupalChannelResolver());
+    $notifier = new Notifier(new ChannelResolver());
     $notifier->sendMessage($message, array($recipient));
 
     return 'woot';

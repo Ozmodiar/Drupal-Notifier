@@ -9,7 +9,7 @@ use Notifier\Mail\MailChannel;
 use Notifier\Recipient\RecipientInterface;
 use Notifier\Type\TypeInterface;
 
-class DrupalChannelResolver implements ChannelResolverInterface {
+class ChannelResolver implements ChannelResolverInterface {
 
   /**
    * @param  RecipientInterface $recipient

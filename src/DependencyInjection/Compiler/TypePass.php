@@ -1,12 +1,12 @@
 <?php
 
-namespace Drupal\notifier\Type;
+namespace Drupal\notifier\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-class TypeCompilerPass implements CompilerPassInterface {
+class TypePass implements CompilerPassInterface {
   /**
    * Find the Notifier types in the services.yml files and register them.
    *
