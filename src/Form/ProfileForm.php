@@ -42,6 +42,8 @@ class ProfileForm {
   }
 
   public function buildForm() {
+    $form = array();
+
     $types = $this->typeStore->getTypes();
     $channels = $this->notifier->getChannelStore()->getChannels();
 

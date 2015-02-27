@@ -1,12 +1,10 @@
 parameters:
   notifier.class: Notifier\Notifier
-  notifier.example_page.class: Drupal\notifier\Page\ExamplePage
-  notifier.profile_form.class: Drupal\notifier\Form\ProfileForm
-  notifier.recover_password_type.class: Drupal\notifier\Type\RecoverPasswordType
-  notifier.type_store.class: Drupal\notifier\Type\TypeStore
-  notifier.type_pass.class: Drupal\notifier\DependencyInjection\Compiler\TypePass
-  notifier.channel_pass.class: Drupal\notifier\DependencyInjection\Compiler\ChannelPass
   notifier.channel_resolver.class: Drupal\notifier\Channel\ChannelResolver
+  notifier.channel_pass.class: Drupal\notifier\DependencyInjection\Compiler\ChannelPass
+  notifier.type_pass.class: Drupal\notifier\DependencyInjection\Compiler\TypePass
+  notifier.profile_form.class: Drupal\notifier\Form\ProfileForm
+  notifier.type_store.class: Drupal\notifier\Type\TypeStore
 
 services:
   notifier:
@@ -14,8 +12,18 @@ services:
     arguments:
       - "@notifier.channel_resolver"
 
-  notifier.example_page:
-    class: "%notifier.example_page.class%"
+  notifier.channel_resolver:
+    class: "%notifier.channel_resolver.class%"
+
+  notifier.channel_pass:
+    class: "%notifier.channel_pass.class%"
+    tags:
+      -  { name: compiler_pass }
+
+  notifier.type_pass:
+    class: "%notifier.type_pass.class%"
+    tags:
+      -  { name: compiler_pass }
 
   notifier.profile_form:
     class: "%notifier.profile_form.class%"
@@ -25,21 +33,3 @@ services:
 
   notifier.type_store:
     class: "%notifier.type_store.class%"
-
-  notifier.recover_password_type:
-    class: "%notifier.recover_password_type.class%"
-    tags:
-      -  { name: notifier.type }
-
-  notifier.type_pass:
-    class: "%notifier.type_pass.class%"
-    tags:
-      -  { name: compiler_pass }
-
-  notifier.channel_pass:
-    class: "%notifier.channel_pass.class%"
-    tags:
-      -  { name: compiler_pass }
-
-  notifier.channel_resolver:
-    class: "%notifier.channel_resolver.class%"

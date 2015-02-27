@@ -15,6 +15,7 @@ class ChannelResolver implements ChannelResolverInterface {
    * @param  RecipientInterface $recipient
    * @param  TypeInterface $type
    * @param  ChannelInterface[] $channels
+   *
    * @return ChannelInterface[]
    */
   public function filterChannels(RecipientInterface $recipient, TypeInterface $type, array $channels) {
