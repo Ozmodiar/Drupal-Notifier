@@ -49,7 +49,7 @@ class ProfileForm {
 
     $channel_options = array();
     foreach ($channels as $channel) {
-      $channel_options[$channel->getIdentifier()] = $channel->getIdentifier();
+      $channel_options[$channel->getIdentifier()] = $channel->getHumanReadableName();
     }
 
     foreach ($types as $identifier => $type) {
