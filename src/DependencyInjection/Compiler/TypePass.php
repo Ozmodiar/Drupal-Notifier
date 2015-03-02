@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class TypePass implements CompilerPassInterface {
 
   /**
-   * Find the Notifier types in the services.yml files and register them.
+   * Find the Notifier types and register them.
    *
    * @param ContainerBuilder $container
    */

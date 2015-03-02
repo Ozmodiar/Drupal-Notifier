@@ -5,10 +5,10 @@ namespace Drupal\notifier\Channel;
 use Notifier\Channel\ChannelInterface;
 use Notifier\Channel\ChannelResolverInterface;
 use Notifier\Channel\ChannelStore;
-use Notifier\Display\DisplayChannel;
 use Notifier\Mail\MailChannel;
 use Notifier\Recipient\RecipientInterface;
 use Notifier\Type\TypeInterface;
+use Drupal\notifier_display\Channel\DisplayChannel;
 
 class ChannelResolver implements ChannelResolverInterface {
 
@@ -31,6 +31,7 @@ class ChannelResolver implements ChannelResolverInterface {
    * @return ChannelInterface[]
    */
   public function getChannels(TypeInterface $type, ChannelStore $channelStore) {
+    //TODO: Get this info from the user notification form.
     return array(new DisplayChannel(), new MailChannel());
   }
 }

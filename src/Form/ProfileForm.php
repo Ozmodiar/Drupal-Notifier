@@ -2,8 +2,8 @@
 
 namespace Drupal\notifier\Form;
 
-use Drupal\notifier\Type\TypeStore;
 use Notifier\Notifier;
+use Drupal\notifier\Type\TypeStore;
 
 class ProfileForm {
 

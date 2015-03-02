@@ -31,8 +31,6 @@ class AdminForm {
   public function buildForm() {
     $form = array();
 
-
-
     return $form;
   }
 
