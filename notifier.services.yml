@@ -3,6 +3,7 @@ parameters:
   notifier.channel_resolver.class: Drupal\notifier\Channel\ChannelResolver
   notifier.channel_pass.class: Drupal\notifier\DependencyInjection\Compiler\ChannelPass
   notifier.type_pass.class: Drupal\notifier\DependencyInjection\Compiler\TypePass
+  notifier.admin_form.class: Drupal\notifier\Form\AdminForm
   notifier.profile_form.class: Drupal\notifier\Form\ProfileForm
   notifier.type_store.class: Drupal\notifier\Type\TypeStore
 
@@ -24,6 +25,9 @@ services:
     class: "%notifier.type_pass.class%"
     tags:
       -  { name: compiler_pass }
+
+  notifier.admin_form:
+    class: "%notifier.admin_form.class%"
 
   notifier.profile_form:
     class: "%notifier.profile_form.class%"

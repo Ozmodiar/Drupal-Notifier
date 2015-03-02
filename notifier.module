@@ -3,6 +3,7 @@
 function notifier_menu() {
   $items = array();
 
+  $items += DIC::service('notifier.admin_form')->buildMenu();
   $items += DIC::service('notifier.profile_form')->buildMenu();
 
   return $items;

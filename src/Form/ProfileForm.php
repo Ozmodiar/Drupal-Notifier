@@ -62,4 +62,12 @@ class ProfileForm {
 
     return $form;
   }
+
+  public function validateForm($form, &$form_state) {
+
+  }
+
+  public function submitForm($form, &$form_state) {
+
+  }
 }
